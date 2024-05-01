@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { CiDollar } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 
 const Job = ({ job }) => {
   const {
+    id,
     logo,
     job_title,
     company_name,
@@ -41,17 +43,13 @@ const Job = ({ job }) => {
             </h2>
           </div>
           <div className="card-actions">
-            <button className="btn btn-primary">View Details</button>
+            <Link to={`/job/${id}`}>
+              {" "}
+              <button className="btn btn-primary">View Details</button>
+            </Link>
           </div>
         </div>
       </div>
-      {/* <div>
-        <img src={logo} alt="" />
-        <h3 className="text-xl ">{job_title}</h3>
-        <h2>{ company_name}</h2>
-
-
-      </div> */}
     </div>
   );
 };

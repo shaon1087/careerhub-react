@@ -1,4 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
+ import { ToastContainer, toast } from "react-toastify";
+ import "react-toastify/dist/ReactToastify.css";
+import { saveJobApplication } from "../../Utility/localStorage";
 
 
 const JobDetails = () => {
@@ -15,21 +18,25 @@ const JobDetails = () => {
       experiences,
       contact_information,
     } = job;
+     const handleApplyBtn = () =>{
+     saveJobApplication(idInt);
+    toast("You are applied successfully!!!");
+     }
     return (
       <div>
         <h2>this is job details</h2>
         <div className="grid gap-4 md:grid-cols-3">
           <div className="grid md:col-span-2">
-            <p className="text-sm font-extrabold">
+            <p className="text-xs font-extrabold">
               Job Description:{job_description}
             </p>
-            <p className="text-sm font-extrabold">
+            <p className="text-xs font-extrabold">
               Job Responsibility:{job_responsibility}
             </p>
-            <p className="text-sm font-extrabold">
+            <p className="text-xs font-extrabold">
               Educational Requirements:{educational_requirements}
             </p>
-            <p className="text-sm font-extrabold">Experiences:{experiences}</p>
+            <p className="text-xs font-extrabold">Experiences:{experiences}</p>
           </div>
           <div className="grid md:col-span-1">
             <div className="border rounded-xl bg-[#4287f5] p-8">
@@ -54,14 +61,17 @@ const JobDetails = () => {
             </div>
 
             <div>
-              <button className="btn w-full mt-2 bg-purple-600 text-white ">
+              <button
+                onClick={handleApplyBtn}
+                className="btn w-full mt-2 bg-purple-600 text-white "
+              >
                 Apply Now
               </button>
             </div>
+            <ToastContainer />
           </div>
         </div>
       </div>
     );
 };
-
 export default JobDetails;

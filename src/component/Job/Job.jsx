@@ -18,8 +18,8 @@ const Job = ({ job }) => {
   } = job;
   return (
     <div>
-      <div className="card card-compact bg-base-100 shadow">
-        <figure>
+      <div className="card-compact bg-base-100 shadow">
+        <figure >
           <img src={logo} alt="" />
         </figure>
         <div className="card-body">
